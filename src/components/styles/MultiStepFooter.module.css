@@ -8,3 +8,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.footer .next_button {
+  margin-left: auto;
+}

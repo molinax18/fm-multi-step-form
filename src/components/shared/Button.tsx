@@ -9,6 +9,7 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 export default function Button({
+  className = "",
   children,
   type = "button",
   btnTheme = "fill",
@@ -16,7 +17,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={style.button}
+      className={`${style.button} ${className}`}
       type={type}
       data-theme={btnTheme}
       {...props}

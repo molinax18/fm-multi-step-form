@@ -14,7 +14,7 @@ export default function MultiStepFooter({
     <footer className={style.footer} {...props}>
       <nav>
         {currentStep > 1 && <Button btnTheme="semi">Go Back</Button>}
-        <Button>Next Step</Button>
+        <Button className={style["next_button"]}>Next Step</Button>
       </nav>
     </footer>
   );
