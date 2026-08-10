@@ -1,4 +1,15 @@
 .header {
+  display: flex;
+  justify-content: center;
+
   background: url("../../assets/images/bg-sidebar-mobile.svg") no-repeat center
     center / cover;
+}
+
+.header ol {
+  display: flex;
+  gap: var(--size-md);
+
+  list-style: none;
+  margin-top: 2rem;
 }

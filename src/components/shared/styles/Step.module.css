@@ -1,0 +1,19 @@
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--white);
+  border-radius: 9999px;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: 2.2em;
+  height: 2.2em;
+}
+
+.step[data-active] {
+  background-color: var(--blue-200);
+  border-color: transparent;
+  color: var(--blue-950);
+}
