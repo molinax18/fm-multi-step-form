@@ -1,0 +1,20 @@
+.form_container {
+  display: grid;
+  grid-template-rows: 20% 1fr 10%;
+
+  background-color: var(--blue-100);
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.form_container article {
+  top: 0;
+
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  padding: var(--size-lg) var(--size-md);
+  margin-inline: auto;
+  margin-top: -3.5rem;
+  height: max-content;
+  width: 90%;
+}

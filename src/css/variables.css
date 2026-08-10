@@ -14,4 +14,7 @@
   --white: hsl(0, 100%, 100%);
 
   --ff-ubuntu: "Ubuntu", sans-serif;
+
+  --size-md: 1rem;
+  --size-lg: 2rem;
 }

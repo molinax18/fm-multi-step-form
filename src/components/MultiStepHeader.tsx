@@ -1,6 +1,12 @@
-export default function MultiStepHeader() {
+import type { ComponentPropsWithoutRef } from "react";
+import style from "./styles/MultiStepHeader.module.css";
+
+export default function MultiStepHeader({
+  className = "",
+  ...props
+}: ComponentPropsWithoutRef<"header">) {
   return (
-    <header>
+    <header className={`${style.header} ${className}`} {...props}>
       <ol arial-label="All form steps">
         <li aria-current="step">1</li>
         <li>2</li>
