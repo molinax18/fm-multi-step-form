@@ -12,12 +12,11 @@ export default function Button({
   children,
   type = "button",
   btnTheme = "fill",
-  className = "",
   ...props
 }: ButtonProps) {
   return (
     <button
-      className={`${style.button} ${className}`}
+      className={style.button}
       type={type}
       data-theme={btnTheme}
       {...props}

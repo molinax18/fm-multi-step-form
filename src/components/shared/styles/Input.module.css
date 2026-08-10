@@ -1,0 +1,20 @@
+.input {
+  border: 2px solid var(--purple-200);
+  border-radius: 0.6em;
+  color: var(--blue-950);
+  font-weight: 500;
+  padding: 0.7em 1em;
+}
+
+input::placeholder {
+  color: var(--purple-200);
+}
+
+.input:focus {
+  outline: 2px solid var(--purple-600);
+}
+
+.input[data-error] {
+  border: 2px solid var(--red-500);
+  color: var(--red-500);
+}

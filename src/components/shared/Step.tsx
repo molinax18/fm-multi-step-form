@@ -6,18 +6,9 @@ interface StepProps extends ComponentPropsWithoutRef<"div"> {
   isActive?: boolean;
 }
 
-export default function Step({
-  className = "",
-  step,
-  isActive,
-  ...props
-}: StepProps) {
+export default function Step({ step, isActive, ...props }: StepProps) {
   return (
-    <div
-      className={`${style.step} ${className}`}
-      data-active={isActive}
-      {...props}
-    >
+    <div className={style.step} data-active={isActive} {...props}>
       {step}
     </div>
   );

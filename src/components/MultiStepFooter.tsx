@@ -7,12 +7,11 @@ interface MultiStepFooterProps extends ComponentPropsWithoutRef<"footer"> {
 }
 
 export default function MultiStepFooter({
-  className = "",
   currentStep,
   ...props
 }: MultiStepFooterProps) {
   return (
-    <footer className={`${style.footer} ${className}`} {...props}>
+    <footer className={style.footer} {...props}>
       <nav>
         {currentStep > 1 && <Button btnTheme="semi">Go Back</Button>}
         <Button>Next Step</Button>

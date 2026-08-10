@@ -8,11 +8,10 @@ interface MultiStepHeaderProps extends ComponentPropsWithoutRef<"header"> {
 
 export default function MultiStepHeader({
   currentStep,
-  className = "",
   ...props
 }: MultiStepHeaderProps) {
   return (
-    <header className={`${style.header} ${className}`} {...props}>
+    <header className={style.header} {...props}>
       <ol arial-label="All form steps">
         {[1, 2, 3, 4].map((n) => {
           return currentStep === n ? (
