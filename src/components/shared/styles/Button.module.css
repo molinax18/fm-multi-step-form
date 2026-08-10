@@ -1,0 +1,16 @@
+.button {
+  background-color: red;
+  border-radius: 0.3em;
+  cursor: pointer;
+  padding: 0.7em 1em;
+}
+
+.button[data-theme="fill"] {
+  background-color: var(--blue-950);
+  color: var(--white);
+}
+
+.button[data-theme="semi"] {
+  background-color: transparent;
+  color: var(--blue-950);
+}

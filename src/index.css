@@ -3,11 +3,20 @@
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-html {
+body {
   font-family: var(--ff-ubuntu);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+}
+
+ol {
+  list-style: none;
 }

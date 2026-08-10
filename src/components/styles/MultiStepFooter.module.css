@@ -2,3 +2,9 @@
   background-color: var(--white);
   padding: var(--size-md);
 }
+
+.footer nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,14 +1,21 @@
 import type { ComponentPropsWithoutRef } from "react";
+import Button from "./shared/Button";
 import style from "./styles/MultiStepFooter.module.css";
+
+interface MultiStepFooterProps extends ComponentPropsWithoutRef<"footer"> {
+  currentStep: number;
+}
 
 export default function MultiStepFooter({
   className = "",
+  currentStep,
   ...props
-}: ComponentPropsWithoutRef<"footer">) {
+}: MultiStepFooterProps) {
   return (
-    <footer className={`${style.footer}${className}`} {...props}>
+    <footer className={`${style.footer} ${className}`} {...props}>
       <nav>
-        <button>Next step</button>
+        {currentStep > 1 && <Button btnTheme="semi">Go Back</Button>}
+        <Button>Next Step</Button>
       </nav>
     </footer>
   );

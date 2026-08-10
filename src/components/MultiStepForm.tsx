@@ -5,7 +5,7 @@ import MultiStepHeader from "./MultiStepHeader";
 import style from "./styles/MultiStepForm.module.css";
 
 export default function MultiStepForm() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   return (
     <section className={style["form_container"]}>
@@ -13,7 +13,7 @@ export default function MultiStepForm() {
       <article>
         <PersonalInfoForm />
       </article>
-      <MultiStepFooter />
+      <MultiStepFooter currentStep={step} />
     </section>
   );
 }
