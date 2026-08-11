@@ -4,7 +4,7 @@
   justify-content: center;
 
   border: 1px solid var(--white);
-  border-radius: 9999px;
+  border-radius: var(--br-full);
   color: var(--white);
   font-size: 0.9rem;
   font-weight: 600;

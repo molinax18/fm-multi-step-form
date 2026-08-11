@@ -1,0 +1,44 @@
+.input_radio_plan_container {
+  display: flex;
+  gap: var(--size-md);
+
+  border: 2px solid var(--purple-200);
+  border-radius: var(--br-sm);
+  background: transparent;
+  padding: var(--size-md);
+  transition: border-color 0.15s ease-out;
+}
+
+.input_radio_plan_container input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.input_radio_plan_container:has(input[type="radio"]:checked) {
+  border: 2px solid var(--purple-600);
+  background-color: var(--blue-100);
+}
+
+.input_radio_plan_container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  flex-grow: 1;
+}
+
+.input_radio_plan_container div h4 {
+  color: var(--purple-600);
+  font-weight: 600;
+}
+
+.input_radio_plan_container div p {
+  font-size: 0.95rem;
+}

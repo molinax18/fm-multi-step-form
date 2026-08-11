@@ -1,0 +1,36 @@
+.plan_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-lg);
+}
+
+.plan_form h2 {
+  margin-bottom: var(--size-md);
+}
+
+.plan_form form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-lg);
+}
+
+.plan_form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-md);
+}
+
+.plan_form_switch {
+  display: flex;
+  justify-content: center;
+  gap: var(--size-md);
+}
+
+.plan_form_switch label {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.plan_form_switch label[data-active="true"] {
+  color: var(--purple-600);
+}

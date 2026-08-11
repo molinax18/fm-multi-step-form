@@ -35,3 +35,9 @@ input {
   font-size: 1.6rem;
   font-weight: 700;
 }
+
+.form {
+  background-color: var(--white);
+  border-radius: var(--br-sm);
+  padding: var(--size-lg) var(--size-md);
+}

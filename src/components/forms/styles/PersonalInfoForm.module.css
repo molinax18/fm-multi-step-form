@@ -2,10 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--size-lg);
-
-  background-color: var(--white);
-  border-radius: 0.75rem;
-  padding: var(--size-lg) var(--size-md);
 }
 
 .personal_info h2 {

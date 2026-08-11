@@ -17,4 +17,7 @@
 
   --size-md: 1rem;
   --size-lg: 2rem;
+
+  --br-sm: 0.6rem;
+  --br-full: 9999px;
 }
