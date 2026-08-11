@@ -1,0 +1,21 @@
+.addons_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-lg);
+}
+
+.addons_form h2 {
+  margin-bottom: var(--size-md);
+}
+
+.addons_form form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-lg);
+}
+
+.addons_form form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-md);
+}

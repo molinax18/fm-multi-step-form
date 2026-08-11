@@ -1,0 +1,53 @@
+.addon_checkbox_input_container {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  gap: var(--size-md);
+
+  border: 2px solid var(--purple-200);
+  border-radius: var(--br-sm);
+  padding: var(--size-md);
+  transition: border-color 0.2 ease;
+}
+
+.addon_checkbox_input_container:has(input[type="checkbox"]:checked) {
+  border-color: var(--purple-600);
+}
+
+.addon_checkbox_input_container h4 {
+  color: var(--blue-950);
+  font-weight: 600;
+}
+
+.addon_checkbox_input_container span {
+  color: var(--purple-600);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.addon_checkbox_input_container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.addon_checkbox_input_container div p {
+  font-size: 0.9rem;
+}
+
+.addon_checkbox_input_container input[type="checkbox"] {
+  border-radius: var(--br-xs);
+  border: 1px solid var(--grey-500);
+  background: center / 14px 14px no-repeat;
+  width: 22px;
+  height: 22px;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.addon_checkbox_input_container input[type="checkbox"]:checked {
+  background-image: url("../../assets/images/icon-checkmark.svg");
+  border-color: var(--purple-600);
+  background-color: var(--purple-600);
+}
