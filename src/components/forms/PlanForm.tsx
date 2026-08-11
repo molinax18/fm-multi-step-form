@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputRadioPlan from "../InputRadioPlan";
+import PlanRadioInput from "../PlanRadioInput";
 import Switch from "../shared/Switch";
 import style from "./styles/PlanForm.module.css";
 
@@ -31,7 +31,7 @@ export default function PlanForm() {
 
       <form>
         <fieldset>
-          <InputRadioPlan
+          <PlanRadioInput
             planName="Arcade"
             name="arcade"
             price={9}
@@ -41,7 +41,7 @@ export default function PlanForm() {
             onChangePlan={onChangePlan}
           />
 
-          <InputRadioPlan
+          <PlanRadioInput
             planName="Advanced"
             name="advanced"
             price={12}
@@ -51,7 +51,7 @@ export default function PlanForm() {
             onChangePlan={onChangePlan}
           />
 
-          <InputRadioPlan
+          <PlanRadioInput
             planName="Pro"
             name="pro"
             price={9}
@@ -80,14 +80,14 @@ function PlanBillingSwitch({
       <label htmlFor="timeBilling" data-active={timeBilling === "monthly"}>
         Monthly
       </label>
-      
+
       <Switch
         name={timeBilling}
         id="timeBilling"
         onSwitch={onSwitch}
         checked={timeBilling === "yearly"}
       />
-      
+
       <label htmlFor="timeBilling" data-active={timeBilling === "yearly"}>
         Yearly
       </label>

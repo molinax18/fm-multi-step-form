@@ -1,25 +1,27 @@
 import type { ComponentPropsWithoutRef } from "react";
 import type { PlanType, TimeBillingType } from "./forms/PlanForm";
-import style from "./styles/InputRadioPlan.module.css";
+import style from "./styles/PlanRadioInput.module.css";
 
-interface InputRadioPlanProps extends ComponentPropsWithoutRef<"input"> {
+interface PlanRadioInputProps extends ComponentPropsWithoutRef<"input"> {
   planName: string;
   name: PlanType;
   image: string;
   price: number;
+  checked: boolean;
   timeBilling: TimeBillingType;
   onChangePlan: (newPlan: PlanType) => void;
 }
 
-export default function InputRadioPlan({
+export default function PlanRadioInput({
   planName,
   name,
   image,
   price,
+  checked,
   timeBilling,
   onChangePlan,
   ...props
-}: InputRadioPlanProps) {
+}: PlanRadioInputProps) {
   const formattedTime = timeBilling === "monthly" ? "mo" : "yr";
 
   return (
@@ -34,6 +36,7 @@ export default function InputRadioPlan({
       <input
         type="radio"
         name={name}
+        checked={checked}
         id={name}
         {...props}
         onChange={() => onChangePlan(name)}
