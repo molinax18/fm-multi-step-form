@@ -7,7 +7,7 @@
   border: 2px solid var(--purple-200);
   border-radius: var(--br-sm);
   padding: var(--size-md);
-  transition: border-color 0.2 ease;
+  transition: border-color 0.1 ease;
 }
 
 .addon_checkbox_input_container:has(input[type="checkbox"]:checked) {
@@ -42,8 +42,8 @@
   width: 22px;
   height: 22px;
   transition:
-    background-color 0.2s,
-    border-color 0.2s;
+    background-color 0.1s,
+    border-color 0.1s;
 }
 
 .addon_checkbox_input_container input[type="checkbox"]:checked {

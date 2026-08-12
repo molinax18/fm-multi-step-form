@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
-import type { PlanType, TimeBillingType } from "./forms/PlanForm";
+import type { PlanType, TimeBillingType } from "../types/multiStepForm";
 import style from "./styles/PlanRadioInput.module.css";
 
 interface PlanRadioInputProps extends ComponentPropsWithoutRef<"input"> {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MultiStepFormContextProvider } from "../context/multiStepForm";
 import PersonalInfoForm from "./forms/PersonalInfoForm";
 import MultiStepFooter from "./MultiStepFooter";
 import MultiStepHeader from "./MultiStepHeader";
@@ -28,9 +29,9 @@ export default function MultiStepForm() {
   return (
     <section className={style["form_container"]}>
       <MultiStepHeader currentStep={step} />
-
-      {renderForm()}
-
+      <MultiStepFormContextProvider>
+        {renderForm()}
+      </MultiStepFormContextProvider>
       <MultiStepFooter currentStep={step} />
     </section>
   );

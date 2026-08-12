@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { PlanType, TimeBillingType } from "../../types/multiStepForm";
 import PlanRadioInput from "../PlanRadioInput";
 import Switch from "../shared/Switch";
 import style from "./styles/PlanForm.module.css";
@@ -6,9 +7,6 @@ import style from "./styles/PlanForm.module.css";
 import arcadeImg from "../../assets/images/icon-arcade.svg";
 import advancedImg from "../../assets/images/icon-advanced.svg";
 import proImg from "../../assets/images/icon-pro.svg";
-
-export type TimeBillingType = "monthly" | "yearly";
-export type PlanType = "arcade" | "advanced" | "pro";
 
 export default function PlanForm() {
   const [timeBilling, setTimeBilling] = useState<TimeBillingType>("monthly");

@@ -1,8 +1,7 @@
 import { useState } from "react";
+import type { AddonType } from "../../types/multiStepForm";
 import AddonCheckboxInput from "../AddonCheckboxInput";
 import style from "./styles/AddonsForm.module.css";
-
-export type AddonType = "online" | "storage" | "profile";
 
 export default function AddonsForm() {
   const [addons, setAddons] = useState<Array<AddonType>>([]);

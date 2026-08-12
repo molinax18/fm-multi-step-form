@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
-import type { AddonType } from "./forms/AddonsForm";
+import type { AddonType } from "../types/multiStepForm";
+import { useMultiStepFormContext } from "../context/multiStepForm";
 import style from "./styles/AddonCheckboxInput.module.css";
 
 interface AddonCheckboxInputProps extends ComponentPropsWithoutRef<"input"> {
@@ -20,6 +21,9 @@ export default function AddonCheckboxInput({
   onChangeAddon,
   ...props
 }: AddonCheckboxInputProps) {
+  const { state } = useMultiStepFormContext();
+  const formattedTime = state.timeBilling === "monthly" ? "mo" : "yr";
+
   return (
     <label htmlFor={name} className={style["addon_checkbox_input_container"]}>
       <input
@@ -37,7 +41,9 @@ export default function AddonCheckboxInput({
         <p>{description}</p>
       </div>
 
-      <span>+${price}/yr</span>
+      <span>
+        +${price}/{formattedTime}
+      </span>
     </label>
   );
 }
