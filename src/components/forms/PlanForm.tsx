@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { PlanType, TimeBillingType } from "../../types/multiStepForm";
+import type { BillingTimeType } from "../../types/multiStepForm";
+import { useMultiStepFormContext } from "../../context/multiStepForm";
 import PlanRadioInput from "../PlanRadioInput";
 import Switch from "../shared/Switch";
 import style from "./styles/PlanForm.module.css";
@@ -9,18 +9,14 @@ import advancedImg from "../../assets/images/icon-advanced.svg";
 import proImg from "../../assets/images/icon-pro.svg";
 
 export default function PlanForm() {
-  const [timeBilling, setTimeBilling] = useState<TimeBillingType>("monthly");
-  const [plan, setPlan] = useState<PlanType>("arcade");
-
-  const onSwitch = () => {
-    setTimeBilling((prev) => (prev === "monthly" ? "yearly" : "monthly"));
-  };
-  const onChangePlan = (newPlan: PlanType) => {
-    setPlan(newPlan);
-  };
+  const {
+    state: { billingTime, plan },
+    onBillingTime,
+    onChangePlan,
+  } = useMultiStepFormContext();
 
   return (
-    <article className={`form ${style["plan_form"]}`}>
+    <article className={`step_container ${style["plan_form"]}`}>
       <header>
         <h2 className="step_title">Select your plan</h2>
 
@@ -33,7 +29,7 @@ export default function PlanForm() {
             planName="Arcade"
             name="arcade"
             price={9}
-            timeBilling={timeBilling}
+            billingTime={billingTime}
             image={arcadeImg}
             checked={plan === "arcade"}
             onChangePlan={onChangePlan}
@@ -43,7 +39,7 @@ export default function PlanForm() {
             planName="Advanced"
             name="advanced"
             price={12}
-            timeBilling={timeBilling}
+            billingTime={billingTime}
             image={advancedImg}
             checked={plan === "advanced"}
             onChangePlan={onChangePlan}
@@ -53,40 +49,43 @@ export default function PlanForm() {
             planName="Pro"
             name="pro"
             price={9}
-            timeBilling={timeBilling}
+            billingTime={billingTime}
             image={proImg}
             checked={plan === "pro"}
             onChangePlan={onChangePlan}
           />
         </fieldset>
 
-        <PlanBillingSwitch timeBilling={timeBilling} onSwitch={onSwitch} />
+        <PlanBillingSwitch
+          billingTime={billingTime}
+          onBillingTime={onBillingTime}
+        />
       </form>
     </article>
   );
 }
 
 function PlanBillingSwitch({
-  timeBilling,
-  onSwitch,
+  billingTime,
+  onBillingTime,
 }: {
-  timeBilling: TimeBillingType;
-  onSwitch: () => void;
+  billingTime: BillingTimeType;
+  onBillingTime: () => void;
 }) {
   return (
     <div className={style["plan_form_switch"]}>
-      <label htmlFor="timeBilling" data-active={timeBilling === "monthly"}>
+      <label htmlFor="billingTime" data-active={billingTime === "monthly"}>
         Monthly
       </label>
 
       <Switch
-        name={timeBilling}
-        id="timeBilling"
-        onSwitch={onSwitch}
-        checked={timeBilling === "yearly"}
+        name={billingTime}
+        id={billingTime}
+        onSwitch={onBillingTime}
+        checked={billingTime === "yearly"}
       />
 
-      <label htmlFor="timeBilling" data-active={timeBilling === "yearly"}>
+      <label htmlFor="billingTime" data-active={billingTime === "yearly"}>
         Yearly
       </label>
     </div>

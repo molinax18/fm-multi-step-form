@@ -1,9 +1,11 @@
-import { useState } from "react";
 import type { AddonType } from "../../types/multiStepForm";
+import { useState } from "react";
+import { useMultiStepFormContext } from "../../context/multiStepForm";
 import AddonCheckboxInput from "../AddonCheckboxInput";
 import style from "./styles/AddonsForm.module.css";
 
 export default function AddonsForm() {
+  const { state } = useMultiStepFormContext();
   const [addons, setAddons] = useState<Array<AddonType>>([]);
   const onChangeAddon = (addon: AddonType) => {
     const hasAddon = addons.some((a) => a === addon);
@@ -18,7 +20,7 @@ export default function AddonsForm() {
   };
 
   return (
-    <article className={`form ${style["addons_form"]}`}>
+    <article className={`step_container ${style["addons_form"]}`}>
       <header>
         <h2 className="step_title">Pick add-ons</h2>
 
@@ -32,6 +34,7 @@ export default function AddonsForm() {
             price={10}
             checked={addons.some((a) => a === "online")}
             addonName="Online service"
+            billingTime={state.billingTime}
             description="Access to multiplayer games"
             onChangeAddon={onChangeAddon}
           />
@@ -41,6 +44,7 @@ export default function AddonsForm() {
             price={20}
             checked={addons.some((a) => a === "storage")}
             addonName="Larger Storage"
+            billingTime={state.billingTime}
             description="Extra 1TB of cloud save"
             onChangeAddon={onChangeAddon}
           />
@@ -50,6 +54,7 @@ export default function AddonsForm() {
             price={20}
             checked={addons.some((a) => a === "profile")}
             addonName="Customizable profile"
+            billingTime={state.billingTime}
             description="Custom theme on your profile"
             onChangeAddon={onChangeAddon}
           />

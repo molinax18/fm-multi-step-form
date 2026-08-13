@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 
-export type TimeBillingType = "monthly" | "yearly";
+export type BillingTimeType = "monthly" | "yearly";
 export type PlanType = "arcade" | "advanced" | "pro";
 export type AddonType = "online" | "storage" | "profile";
 
@@ -13,11 +13,13 @@ export type PersonalInfoType = {
 export type MultiStepFormValues = {
   personalInfo: PersonalInfoType;
   plan: PlanType;
-  timeBilling: TimeBillingType;
+  billingTime: BillingTimeType;
   addons: Array<AddonType>;
 };
 
 export interface MultiStepFormContextProps {
   state: MultiStepFormValues;
   setState: Dispatch<SetStateAction<MultiStepFormValues>>;
+  onChangePlan: (plan: PlanType) => void;
+  onBillingTime: () => void;
 }

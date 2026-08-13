@@ -6,7 +6,7 @@ export default function PersonalInfoForm({
   ...props
 }: ComponentPropsWithoutRef<"article">) {
   return (
-    <article className={`form ${style["personal_info"]}`} {...props}>
+    <article className={`step_container ${style["personal_info"]}`} {...props}>
       <header>
         <h2 className="step_title">Personal info</h2>
 

@@ -3,18 +3,9 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import type {
   MultiStepFormContextProps,
   MultiStepFormValues,
+  PlanType,
 } from "../types/multiStepForm";
-
-export const initialValues: MultiStepFormValues = {
-  personalInfo: {
-    name: "",
-    email: "",
-    phone: "",
-  },
-  plan: "arcade",
-  timeBilling: "monthly",
-  addons: ["online"],
-};
+import { initialContextValue } from "../constants/multiStepForm";
 
 export const MultiStepFormContext =
   createContext<MultiStepFormContextProps | null>(null);
@@ -24,10 +15,26 @@ export function MultiStepFormContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [state, setState] = useState<MultiStepFormValues>(initialValues);
+  const [state, setState] = useState<MultiStepFormValues>(initialContextValue);
+
+  function onBillingTime() {
+    setState((prev) => ({
+      ...prev,
+      billingTime: prev.billingTime === "monthly" ? "yearly" : "monthly",
+    }));
+  }
+
+  function onChangePlan(newPlan: PlanType) {
+    setState((prev) => ({
+      ...prev,
+      plan: newPlan,
+    }));
+  }
 
   return (
-    <MultiStepFormContext.Provider value={{ state, setState }}>
+    <MultiStepFormContext.Provider
+      value={{ state, setState, onBillingTime, onChangePlan }}
+    >
       {children}
     </MultiStepFormContext.Provider>
   );
