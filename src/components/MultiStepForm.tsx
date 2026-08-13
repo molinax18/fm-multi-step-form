@@ -5,10 +5,11 @@ import MultiStepFooter from "./MultiStepFooter";
 import MultiStepHeader from "./MultiStepHeader";
 import PlanForm from "./forms/PlanForm";
 import AddonsForm from "./forms/AddonsForm";
+import MultiStepCheck from "./MultiStepCheck";
 import style from "./styles/MultiStepForm.module.css";
 
 export default function MultiStepForm() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
 
   const renderForm = () => {
     if (step === 1) {
@@ -21,6 +22,10 @@ export default function MultiStepForm() {
 
     if (step === 3) {
       return <AddonsForm />;
+    }
+
+    if (step === 4) {
+      return <MultiStepCheck />;
     }
 
     return <span>No forms available</span>;

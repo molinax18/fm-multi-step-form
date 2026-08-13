@@ -18,7 +18,8 @@ button {
   border: none;
 }
 
-ol {
+ol,
+ul {
   list-style: none;
 }
 
@@ -41,7 +42,7 @@ input[type="checkbox"] {
   font-weight: 700;
 }
 
-.form {
+.step_container {
   background-color: var(--white);
   border-radius: var(--br-sm);
   padding: var(--size-lg) var(--size-md);
