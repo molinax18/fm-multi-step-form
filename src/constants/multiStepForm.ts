@@ -1,5 +1,7 @@
 import type { MultiStepFormValues } from "../types/multiStepForm";
 
+export const allSteps = 4;
+
 export const initialContextValue: MultiStepFormValues = {
   personalInfo: {
     name: "",
@@ -9,6 +11,7 @@ export const initialContextValue: MultiStepFormValues = {
   plan: "arcade",
   billingTime: "monthly",
   addons: ["online"],
+  currentStep: 1,
 };
 
 export const prices = {

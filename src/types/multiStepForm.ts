@@ -15,6 +15,7 @@ export type MultiStepFormValues = {
   plan: PlanType;
   billingTime: BillingTimeType;
   addons: Array<AddonType>;
+  currentStep: number;
 };
 
 export interface MultiStepFormContextProps {

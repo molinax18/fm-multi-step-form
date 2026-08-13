@@ -1,24 +1,24 @@
 import type { ComponentPropsWithoutRef } from "react";
+import { useMultiStepFormContext } from "../context/multiStepForm";
 import Step from "./shared/Step";
 import style from "./styles/MultiStepHeader.module.css";
-
-interface MultiStepHeaderProps extends ComponentPropsWithoutRef<"header"> {
-  currentStep: number;
-}
+import { allSteps } from "../constants/multiStepForm";
 
 export default function MultiStepHeader({
-  currentStep,
   ...props
-}: MultiStepHeaderProps) {
+}: ComponentPropsWithoutRef<"header">) {
+  const { state } = useMultiStepFormContext();
+  const stepsArr = Array.from({ length: allSteps }, (_, index) => index + 1);
+
   return (
     <header className={style.header} {...props}>
       <ol arial-label="All form steps">
-        {[1, 2, 3, 4].map((n) => {
-          return currentStep === n ? (
+        {stepsArr.map((n) => {
+          return state.currentStep === n ? (
             <Step
               key={n}
-              aria-current={n === currentStep && "step"}
-              isActive={currentStep === n}
+              aria-current={n === state.currentStep && "step"}
+              isActive={state.currentStep === n}
               step={n}
             />
           ) : (
