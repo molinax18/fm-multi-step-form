@@ -43,8 +43,13 @@
 }
 
 .multi_step_check_plan_option h3,
-.multi_step_check_plan_option span {
+.multi_step_check_plan_option span,
+.multi_step_check_addon_option span {
   color: var(--blue-950);
+}
+
+.multi_step_check_plan_option h3,
+.multi_step_check_plan_option span {
   font-weight: 600;
 }
 
@@ -59,8 +64,9 @@
   font-weight: 500;
 }
 
-.multi_step_check footer {
+.multi_step_check footer span {
   padding-inline: var(--size-md);
+  color: var(--grey-500);
 }
 
 .multi_step_check footer span:last-child {

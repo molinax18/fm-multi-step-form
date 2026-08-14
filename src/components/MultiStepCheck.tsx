@@ -1,3 +1,4 @@
+import type { AddonType } from "../types/multiStepForm";
 import { prices } from "../constants/multiStepForm";
 import { useMultiStepFormContext } from "../context/multiStepForm";
 import { formattedBillingTime } from "../utils/formattedBillingTime";
@@ -7,6 +8,7 @@ export default function MultiStepCheck() {
   const {
     state: { billingTime, plan, addons },
   } = useMultiStepFormContext();
+
   const totalPrice =
     prices[billingTime].plan[plan] +
     addons.reduce((acc, a) => acc + prices[billingTime].addons[a], 0);
@@ -23,7 +25,7 @@ export default function MultiStepCheck() {
           <li className={style["multi_step_check_plan_option"]}>
             <div>
               <h3>
-                {plan} ({billingTime})
+                {plan.replace(plan[0], plan[0].toUpperCase())} ({billingTime})
               </h3>
 
               <button>Change</button>
@@ -36,8 +38,8 @@ export default function MultiStepCheck() {
           <hr />
           {addons.map((a) => {
             return (
-              <li key={a}>
-                <h4>{a}</h4>
+              <li key={a} className={style["multi_step_check_addon_option"]}>
+                <h4>{addonName(a)}</h4>
                 <span>
                   ${prices[billingTime].addons[a]}/
                   {formattedBillingTime(billingTime)}
@@ -56,4 +58,18 @@ export default function MultiStepCheck() {
       </div>
     </article>
   );
+}
+
+function addonName(addon: AddonType) {
+  switch (addon) {
+    case "online":
+      return "Online service";
+    case "profile":
+      return "Customizable profile";
+    case "storage":
+      return "Larger storage";
+
+    default:
+      return "Undefined";
+  }
 }
