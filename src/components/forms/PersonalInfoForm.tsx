@@ -6,19 +6,19 @@ import style from "./styles/PersonalInfoForm.module.css";
 const errorMessages = {
   name: "Ingresa un nombre válido. Como mínimo tres caracteres",
   email: "Ingresa un email válido",
-  phoneNumber: "Ingresa un número de teléfono válido",
+  phone: "Ingresa un número de teléfono válido",
 };
 
 interface FormErrors {
   name?: string;
   email?: string;
-  phoneNumber?: string;
+  phone?: string;
 }
 
 export default function PersonalInfoForm({
   ...props
 }: ComponentPropsWithoutRef<"article">) {
-  const { onNextStep } = useMultiStepFormContext();
+  const { onNextStep, addPersonalInfo } = useMultiStepFormContext();
   const [error, setError] = useState<FormErrors | null>(null);
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ export default function PersonalInfoForm({
     const formData = Object.fromEntries(new FormData(event.currentTarget));
     const name = String(formData.name).trim();
     const email = String(formData.email).trim();
-    const phoneNumber = String(formData.phoneNumber).trim();
+    const phone = String(formData.phone).trim();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneRegex = /^\+?[\d\s()-]{7,20}$/;
@@ -43,8 +43,8 @@ export default function PersonalInfoForm({
       newErrors.email = errorMessages.email;
     }
 
-    if (!phoneRegex.test(phoneNumber)) {
-      newErrors.phoneNumber = errorMessages.phoneNumber;
+    if (!phoneRegex.test(phone)) {
+      newErrors.phone = errorMessages.phone;
     }
 
     const hasErrors = Object.keys(newErrors).length > 0;
@@ -55,6 +55,7 @@ export default function PersonalInfoForm({
     }
 
     setError(null);
+    addPersonalInfo({ name, email, phone });
     onNextStep();
   };
 
@@ -85,9 +86,9 @@ export default function PersonalInfoForm({
         <Input
           type="tel"
           label="Phone Number"
-          name="phoneNumber"
+          name="phone"
           placeholder="e.g +1 234 567 890"
-          error={error?.phoneNumber ?? null}
+          error={error?.phone ?? null}
         />
       </form>
     </article>

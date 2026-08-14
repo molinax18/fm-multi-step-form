@@ -3,6 +3,7 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import type {
   MultiStepFormContextProps,
   MultiStepFormValues,
+  PersonalInfoType,
   PlanType,
 } from "../types/multiStepForm";
 import { initialContextValue } from "../constants/multiStepForm";
@@ -35,9 +36,20 @@ export function MultiStepFormContextProvider({
     setState((prev) => ({ ...prev, currentStep: prev.currentStep + 1 }));
   }
 
+  function addPersonalInfo(data: PersonalInfoType) {
+    setState((prev) => ({ ...prev, personalInfo: data }));
+  }
+
   return (
     <MultiStepFormContext.Provider
-      value={{ state, setState, onBillingTime, onChangePlan, onNextStep }}
+      value={{
+        state,
+        setState,
+        onBillingTime,
+        onChangePlan,
+        onNextStep,
+        addPersonalInfo,
+      }}
     >
       {children}
     </MultiStepFormContext.Provider>
