@@ -24,6 +24,7 @@ export interface MultiStepFormContextProps {
   onChangePlan: (plan: PlanType) => void;
   onBillingTime: () => void;
   onNextStep: () => void;
+  onPrevStep: () => void;
   addPersonalInfo: (data: PersonalInfoType) => void;
   onChangeAddon: (addon: AddonType) => void;
 }

@@ -53,6 +53,10 @@ export function MultiStepFormContextProvider({
     setState((prev) => ({ ...prev, addons: [...state.addons, addon] }));
   }
 
+  function onPrevStep() {
+    setState((prev) => ({ ...prev, currentStep: prev.currentStep - 1 }));
+  }
+
   return (
     <MultiStepFormContext.Provider
       value={{
@@ -63,6 +67,7 @@ export function MultiStepFormContextProvider({
         onNextStep,
         addPersonalInfo,
         onChangeAddon,
+        onPrevStep,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ import style from "./styles/MultiStepCheck.module.css";
 export default function MultiStepCheck() {
   const {
     state: { billingTime, plan, addons },
+    onBillingTime,
   } = useMultiStepFormContext();
 
   const totalPrice =
@@ -28,7 +29,7 @@ export default function MultiStepCheck() {
                 {plan.replace(plan[0], plan[0].toUpperCase())} ({billingTime})
               </h3>
 
-              <button>Change</button>
+              <button onClick={onBillingTime}>Change</button>
             </div>
             <span>
               ${prices[billingTime].plan[plan]}/
