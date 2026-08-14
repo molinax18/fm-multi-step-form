@@ -23,4 +23,5 @@ export interface MultiStepFormContextProps {
   setState: Dispatch<SetStateAction<MultiStepFormValues>>;
   onChangePlan: (plan: PlanType) => void;
   onBillingTime: () => void;
+  onNextStep: () => void;
 }

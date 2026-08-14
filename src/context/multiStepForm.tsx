@@ -31,9 +31,13 @@ export function MultiStepFormContextProvider({
     }));
   }
 
+  function onNextStep() {
+    setState((prev) => ({ ...prev, currentStep: prev.currentStep + 1 }));
+  }
+
   return (
     <MultiStepFormContext.Provider
-      value={{ state, setState, onBillingTime, onChangePlan }}
+      value={{ state, setState, onBillingTime, onChangePlan, onNextStep }}
     >
       {children}
     </MultiStepFormContext.Provider>
