@@ -4,9 +4,9 @@ import Input from "../shared/Input";
 import style from "./styles/PersonalInfoForm.module.css";
 
 const errorMessages = {
-  name: "Ingresa un nombre válido. Como mínimo tres caracteres",
-  email: "Ingresa un email válido",
-  phone: "Ingresa un número de teléfono válido",
+  name: "Please send a valid name. Minimun three characters",
+  email: "Please send a valid email",
+  phone: "Please send a valid phone",
 };
 
 interface FormErrors {

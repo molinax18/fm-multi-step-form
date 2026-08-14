@@ -13,7 +13,7 @@ export default function PlanForm() {
     state: { billingTime, plan },
     onBillingTime,
     onChangePlan,
-    onNextStep
+    onNextStep,
   } = useMultiStepFormContext();
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
