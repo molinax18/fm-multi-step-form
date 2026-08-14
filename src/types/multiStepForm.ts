@@ -25,4 +25,5 @@ export interface MultiStepFormContextProps {
   onBillingTime: () => void;
   onNextStep: () => void;
   addPersonalInfo: (data: PersonalInfoType) => void;
+  onChangeAddon: (addon: AddonType) => void;
 }

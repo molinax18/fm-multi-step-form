@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, type ReactNode } from "react";
 import type {
+  AddonType,
   MultiStepFormContextProps,
   MultiStepFormValues,
   PersonalInfoType,
@@ -40,6 +41,18 @@ export function MultiStepFormContextProvider({
     setState((prev) => ({ ...prev, personalInfo: data }));
   }
 
+  function onChangeAddon(addon: AddonType) {
+    const hasAddon = state.addons.some((a) => a === addon);
+
+    if (hasAddon) {
+      const newAddons = state.addons.filter((a) => a !== addon);
+      setState((prev) => ({ ...prev, addons: newAddons }));
+      return;
+    }
+
+    setState((prev) => ({ ...prev, addons: [...state.addons, addon] }));
+  }
+
   return (
     <MultiStepFormContext.Provider
       value={{
@@ -49,6 +62,7 @@ export function MultiStepFormContextProvider({
         onChangePlan,
         onNextStep,
         addPersonalInfo,
+        onChangeAddon,
       }}
     >
       {children}
