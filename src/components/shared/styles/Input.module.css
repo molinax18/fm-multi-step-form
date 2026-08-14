@@ -18,3 +18,8 @@ input::placeholder {
   border: 2px solid var(--red-500);
   color: var(--red-500);
 }
+
+span {
+  font-size: 0.9rem;
+  color: var(--red-500);
+}

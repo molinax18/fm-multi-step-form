@@ -13,7 +13,13 @@ export default function MultiStepFooter({
       <nav>
         {state.currentStep > 1 && <Button btnTheme="semi">Go Back</Button>}
 
-        <Button className={style["next_button"]}>Next Step</Button>
+        <Button
+          className={style["next_button"]}
+          type="submit"
+          form="multiStepForm"
+        >
+          Next Step
+        </Button>
       </nav>
     </footer>
   );

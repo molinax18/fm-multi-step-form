@@ -1,10 +1,63 @@
-import type { ComponentPropsWithoutRef } from "react";
+import { useState, type ComponentPropsWithoutRef } from "react";
+import { useMultiStepFormContext } from "../../context/multiStepForm";
 import Input from "../shared/Input";
 import style from "./styles/PersonalInfoForm.module.css";
+
+const errorMessages = {
+  name: "Ingresa un nombre válido. Como mínimo tres caracteres",
+  email: "Ingresa un email válido",
+  phoneNumber: "Ingresa un número de teléfono válido",
+};
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+}
 
 export default function PersonalInfoForm({
   ...props
 }: ComponentPropsWithoutRef<"article">) {
+  const { onNextStep } = useMultiStepFormContext();
+  const [error, setError] = useState<FormErrors | null>(null);
+
+  const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null);
+
+    const formData = Object.fromEntries(new FormData(event.currentTarget));
+    const name = String(formData.name).trim();
+    const email = String(formData.email).trim();
+    const phoneNumber = String(formData.phoneNumber).trim();
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phoneRegex = /^\+?[\d\s()-]{7,20}$/;
+
+    const newErrors: FormErrors = {};
+
+    if (!name || name.length < 3) {
+      newErrors.name = errorMessages.name;
+    }
+
+    if (!emailRegex.test(email)) {
+      newErrors.email = errorMessages.email;
+    }
+
+    if (!phoneRegex.test(phoneNumber)) {
+      newErrors.phoneNumber = errorMessages.phoneNumber;
+    }
+
+    const hasErrors = Object.keys(newErrors).length > 0;
+
+    if (hasErrors) {
+      setError(newErrors);
+      return;
+    }
+
+    setError(null);
+    onNextStep();
+  };
+
   return (
     <article className={`step_container ${style["personal_info"]}`} {...props}>
       <header>
@@ -13,14 +66,20 @@ export default function PersonalInfoForm({
         <p>Please provide your name, email address, and phone number</p>
       </header>
 
-      <form>
-        <Input label="Name" name="name" placeholder="John Doe" />
+      <form onSubmit={onSubmit} id="multiStepForm">
+        <Input
+          label="Name"
+          name="name"
+          placeholder="John Doe"
+          error={error?.name ?? null}
+        />
 
         <Input
           type="email"
           label="Email Address"
           name="email"
           placeholder="johndoe@gmail.com"
+          error={error?.email ?? null}
         />
 
         <Input
@@ -28,6 +87,7 @@ export default function PersonalInfoForm({
           label="Phone Number"
           name="phoneNumber"
           placeholder="e.g +1 234 567 890"
+          error={error?.phoneNumber ?? null}
         />
       </form>
     </article>

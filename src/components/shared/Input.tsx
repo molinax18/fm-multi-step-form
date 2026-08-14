@@ -3,7 +3,7 @@ import style from "./styles/Input.module.css";
 
 interface InputProps extends ComponentPropsWithoutRef<"input"> {
   label?: string;
-  error?: string;
+  error: string | null;
   name: string;
 }
 
@@ -27,6 +27,7 @@ export default function Input({
         className={style.input}
         {...props}
       />
+      {error && <span>{error}</span>}
     </div>
   );
 }
