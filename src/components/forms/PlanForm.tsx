@@ -13,7 +13,14 @@ export default function PlanForm() {
     state: { billingTime, plan },
     onBillingTime,
     onChangePlan,
+    onNextStep
   } = useMultiStepFormContext();
+
+  const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    onNextStep();
+  };
 
   return (
     <article className={`step_container ${style["plan_form"]}`}>
@@ -23,7 +30,7 @@ export default function PlanForm() {
         <p>You have the option of monthly or yearly billing</p>
       </header>
 
-      <form>
+      <form onSubmit={onSubmit} id="multiStepForm">
         <fieldset>
           <PlanRadioInput
             planName="Arcade"
