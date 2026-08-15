@@ -1,14 +1,17 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { useMultiStepFormContext } from "../context/multiStepForm";
 import Step from "./shared/Step";
-import style from "./styles/MultiStepHeader.module.css";
 import { allSteps } from "../constants/multiStepForm";
+import style from "./styles/MultiStepHeader.module.css";
 
 export default function MultiStepHeader({
   ...props
 }: ComponentPropsWithoutRef<"header">) {
   const { state } = useMultiStepFormContext();
-  const stepsArr = Array.from({ length: allSteps }, (_, index) => index + 1);
+  const stepsArr = Array.from(
+    { length: allSteps - 1 },
+    (_, index) => index + 1,
+  );
 
   return (
     <header className={style.header} {...props}>
