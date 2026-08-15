@@ -19,7 +19,7 @@ input::placeholder {
   color: var(--red-500);
 }
 
-span {
+.error {
   font-size: 0.9rem;
   color: var(--red-500);
 }

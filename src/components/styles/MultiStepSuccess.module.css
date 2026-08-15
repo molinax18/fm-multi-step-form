@@ -1,7 +1,7 @@
 .multi_step_success {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   gap: var(--size-md);
 
   padding-block: 4rem;
@@ -14,4 +14,10 @@
 .multi_step_success p {
   text-align: center;
   line-height: 1.4;
+}
+
+@media (width > 1024px) {
+  .multi_step_success {
+    justify-content: center;
+  }
 }

@@ -1,3 +1,13 @@
 .main {
   min-height: 100dvh;
 }
+
+@media (width > 1024px) {
+  .main {
+    display: grid;
+    align-items: center;
+    min-height: 100dvh;
+
+    background-color: var(--blue-100);
+  }
+}

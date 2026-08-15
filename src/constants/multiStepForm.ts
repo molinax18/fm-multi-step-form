@@ -11,7 +11,7 @@ export const initialContextValue: MultiStepFormValues = {
   plan: "arcade",
   billingTime: "monthly",
   addons: ["online"],
-  currentStep: 4,
+  currentStep: 1,
 };
 
 export const prices = {

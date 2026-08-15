@@ -4,20 +4,9 @@
   display: inline-block;
   background-color: var(--blue-950);
   border-radius: var(--br-full);
+  cursor: pointer;
   width: 44px;
   height: 20px;
-}
-
-.switch input[type="checkbox"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
 .switch::before {

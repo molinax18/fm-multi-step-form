@@ -16,10 +16,11 @@ export default function MultiStepForm() {
     <section className={style["form_container"]}>
       <MultiStepFormContextProvider>
         <MultiStepHeader />
+        <div>
+          <RenderForms />
 
-        <RenderForms />
-
-        <MultiStepFooter />
+          <MultiStepFooter className={style["form_container_footer"]} />
+        </div>
       </MultiStepFormContextProvider>
     </section>
   );

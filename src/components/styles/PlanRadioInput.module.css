@@ -5,20 +5,9 @@
   border: 2px solid var(--purple-200);
   border-radius: var(--br-sm);
   background: transparent;
+  cursor: pointer;
   padding: var(--size-md);
   transition: border-color 0.15s ease-out;
-}
-
-.plan_radio_input_container input[type="radio"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
 .plan_radio_input_container:has(input[type="radio"]:checked) {

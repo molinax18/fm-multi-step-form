@@ -5,12 +5,13 @@ import Button from "./shared/Button";
 import style from "./styles/MultiStepFooter.module.css";
 
 export default function MultiStepFooter({
+  className = "",
   ...props
 }: ComponentPropsWithoutRef<"footer">) {
   const { state, onPrevStep } = useMultiStepFormContext();
 
   return (
-    <footer className={style.footer} {...props}>
+    <footer className={`${style.footer} ${className}`} {...props}>
       <nav>
         {state.currentStep > 1 && (
           <Button btnTheme="semi" onClick={onPrevStep}>

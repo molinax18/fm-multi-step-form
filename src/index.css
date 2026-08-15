@@ -14,8 +14,9 @@ body {
 }
 
 button {
-  font-family: inherit;
   border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 ol,
@@ -31,9 +32,12 @@ input {
   font-family: inherit;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
+
+  cursor: pointer;
 }
 
 .step_title {

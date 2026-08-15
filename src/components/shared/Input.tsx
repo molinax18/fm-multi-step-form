@@ -27,7 +27,7 @@ export default function Input({
         className={style.input}
         {...props}
       />
-      {error && <span>{error}</span>}
+      {error && <span className={style.error}>{error}</span>}
     </div>
   );
 }
