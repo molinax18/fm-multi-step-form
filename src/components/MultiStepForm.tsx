@@ -2,12 +2,13 @@ import {
   MultiStepFormContextProvider,
   useMultiStepFormContext,
 } from "../context/multiStepForm";
-import PersonalInfoForm from "./forms/PersonalInfoForm";
 import MultiStepFooter from "./MultiStepFooter";
 import MultiStepHeader from "./MultiStepHeader";
+import MultiStepCheck from "./MultiStepCheck";
+import MultiStepSuccess from "./MultiStepSuccess";
+import PersonalInfoForm from "./forms/PersonalInfoForm";
 import PlanForm from "./forms/PlanForm";
 import AddonsForm from "./forms/AddonsForm";
-import MultiStepCheck from "./MultiStepCheck";
 import style from "./styles/MultiStepForm.module.css";
 
 export default function MultiStepForm() {
@@ -36,6 +37,8 @@ function RenderForms() {
       return <AddonsForm />;
     case 4:
       return <MultiStepCheck />;
+    case 5:
+      return <MultiStepSuccess />;
     default:
       return <span>No forms available</span>;
   }
