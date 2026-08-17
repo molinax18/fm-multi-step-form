@@ -34,11 +34,11 @@ export default function PersonalInfoForm({
     const email = state.personalInfo.email.trim();
     const phone = state.personalInfo.phone.trim();
 
-    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]{3,50}$/;
+    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s-]{3,50}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[\d\s+\-()]{10,20}$/;
 
-    const newErrors: FormErrors = {};
+    const newErrors: Partial<PersonalInfoType> = {};
 
     if (!name || !nameRegex.test(name)) {
       newErrors.name = errorMessages.name;
