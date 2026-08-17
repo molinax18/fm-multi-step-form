@@ -18,17 +18,29 @@ interface FormErrors {
 export default function PersonalInfoForm({
   ...props
 }: ComponentPropsWithoutRef<"article">) {
-  const { goToNextStep, setPersonalInfo } = useMultiStepFormContext();
+  const { state, goToNextStep, setPersonalInfo } = useMultiStepFormContext();
   const [error, setError] = useState<FormErrors | null>(null);
+  const [formValues, setFormValues] = useState({
+    name: state.personalInfo.name,
+    email: state.personalInfo.email,
+    phone: state.personalInfo.phone,
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
 
-    const formData = Object.fromEntries(new FormData(event.currentTarget));
-    const name = String(formData.name).trim();
-    const email = String(formData.email).trim();
-    const phone = String(formData.phone).trim();
+    const name = formValues.name.trim();
+    const email = formValues.email.trim();
+    const phone = formValues.phone.trim();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneRegex = /^\+?[\d\s()-]{7,20}$/;
@@ -72,6 +84,8 @@ export default function PersonalInfoForm({
           label="Name"
           name="name"
           placeholder="John Doe"
+          value={formValues.name}
+          onChange={handleInputChange}
           error={error?.name ?? null}
         />
 
@@ -80,6 +94,8 @@ export default function PersonalInfoForm({
           label="Email Address"
           name="email"
           placeholder="johndoe@gmail.com"
+          value={formValues.email}
+          onChange={handleInputChange}
           error={error?.email ?? null}
         />
 
@@ -88,6 +104,8 @@ export default function PersonalInfoForm({
           label="Phone Number"
           name="phone"
           placeholder="e.g +1 234 567 890"
+          value={formValues.phone}
+          onChange={handleInputChange}
           error={error?.phone ?? null}
         />
       </form>
