@@ -4,9 +4,10 @@ import Input from "../shared/Input";
 import style from "./styles/PersonalInfoForm.module.css";
 
 const errorMessages = {
-  name: "Please send a valid name. Minimun three characters",
-  email: "Please send a valid email",
-  phone: "Please send a valid phone",
+  name: "Name must be 3-50 characters and contain only letters, spaces, and hyphens",
+  email: "Please enter a valid email address",
+  phone:
+    "Phone number must be between 10-20 characters with digits, spaces, +, () or -",
 };
 
 interface FormErrors {
@@ -42,20 +43,21 @@ export default function PersonalInfoForm({
     const email = formValues.email.trim();
     const phone = formValues.phone.trim();
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phoneRegex = /^\+?[\d\s()-]{7,20}$/;
+    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s\-]{3,50}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s+\-()]{10,20}$/;
 
     const newErrors: FormErrors = {};
 
-    if (!name || name.length < 3) {
+    if (!name || !nameRegex.test(name)) {
       newErrors.name = errorMessages.name;
     }
 
-    if (!emailRegex.test(email)) {
+    if (!email || !emailRegex.test(email)) {
       newErrors.email = errorMessages.email;
     }
 
-    if (!phoneRegex.test(phone)) {
+    if (!phone || !phoneRegex.test(phone)) {
       newErrors.phone = errorMessages.phone;
     }
 
