@@ -4,6 +4,7 @@ import type {
   AddonType,
   MultiStepFormContextProps,
   PersonalInfoType,
+  PersonalInfoField,
   PlanType,
 } from "../types/multiStepForm";
 import { initialContextValue } from "../constants/multiStepForm";
@@ -35,6 +36,10 @@ export function MultiStepFormContextProvider({
     dispatch({ type: "SET_PERSONAL_INFO", payload: data });
   };
 
+  const updatePersonalInfoField = (field: PersonalInfoField, value: string) => {
+    dispatch({ type: "UPDATE_PERSONAL_INFO_FIELD", payload: { field, value } });
+  };
+
   const toggleAddon = (addon: AddonType) => {
     dispatch({ type: "TOGGLE_ADDON", payload: addon });
   };
@@ -51,6 +56,7 @@ export function MultiStepFormContextProvider({
         setPlan,
         goToNextStep,
         setPersonalInfo,
+        updatePersonalInfoField,
         toggleAddon,
         goToPrevStep,
       }}

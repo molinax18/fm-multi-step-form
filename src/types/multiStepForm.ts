@@ -8,6 +8,8 @@ export type PersonalInfoType = {
   phone: string;
 };
 
+export type PersonalInfoField = keyof PersonalInfoType;
+
 export type MultiStepFormValues = {
   personalInfo: PersonalInfoType;
   plan: PlanType;
@@ -18,6 +20,10 @@ export type MultiStepFormValues = {
 
 export type FormAction =
   | { type: "SET_PERSONAL_INFO"; payload: PersonalInfoType }
+  | {
+      type: "UPDATE_PERSONAL_INFO_FIELD";
+      payload: { field: PersonalInfoField; value: string };
+    }
   | { type: "SET_PLAN"; payload: PlanType }
   | { type: "TOGGLE_BILLING_TIME" }
   | { type: "GO_TO_NEXT_STEP" }
@@ -31,5 +37,6 @@ export interface MultiStepFormContextProps {
   goToNextStep: () => void;
   goToPrevStep: () => void;
   setPersonalInfo: (data: PersonalInfoType) => void;
+  updatePersonalInfoField: (field: PersonalInfoField, value: string) => void;
   toggleAddon: (addon: AddonType) => void;
 }

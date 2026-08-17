@@ -7,6 +7,14 @@ export const formReducer = (
   switch (action.type) {
     case "SET_PERSONAL_INFO":
       return { ...state, personalInfo: action.payload };
+    case "UPDATE_PERSONAL_INFO_FIELD":
+      return {
+        ...state,
+        personalInfo: {
+          ...state.personalInfo,
+          [action.payload.field]: action.payload.value,
+        },
+      };
     case "SET_PLAN":
       return { ...state, plan: action.payload };
     case "TOGGLE_BILLING_TIME":
