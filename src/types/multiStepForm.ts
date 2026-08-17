@@ -1,5 +1,3 @@
-import type { Dispatch, SetStateAction } from "react";
-
 export type BillingTimeType = "monthly" | "yearly";
 export type PlanType = "arcade" | "advanced" | "pro";
 export type AddonType = "online" | "storage" | "profile";
@@ -18,13 +16,20 @@ export type MultiStepFormValues = {
   currentStep: number;
 };
 
+export type FormAction =
+  | { type: "SET_PERSONAL_INFO"; payload: PersonalInfoType }
+  | { type: "SET_PLAN"; payload: PlanType }
+  | { type: "TOGGLE_BILLING_TIME" }
+  | { type: "GO_TO_NEXT_STEP" }
+  | { type: "GO_TO_PREV_STEP" }
+  | { type: "TOGGLE_ADDON"; payload: AddonType };
+
 export interface MultiStepFormContextProps {
   state: MultiStepFormValues;
-  setState: Dispatch<SetStateAction<MultiStepFormValues>>;
-  onChangePlan: (plan: PlanType) => void;
-  onBillingTime: () => void;
-  onNextStep: () => void;
-  onPrevStep: () => void;
-  addPersonalInfo: (data: PersonalInfoType) => void;
-  onChangeAddon: (addon: AddonType) => void;
+  setPlan: (plan: PlanType) => void;
+  toggleBillingTime: () => void;
+  goToNextStep: () => void;
+  goToPrevStep: () => void;
+  setPersonalInfo: (data: PersonalInfoType) => void;
+  toggleAddon: (addon: AddonType) => void;
 }

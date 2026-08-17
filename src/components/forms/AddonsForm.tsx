@@ -5,14 +5,14 @@ import style from "./styles/AddonsForm.module.css";
 export default function AddonsForm() {
   const {
     state: { addons, billingTime },
-    onChangeAddon,
-    onNextStep,
+    toggleAddon,
+    goToNextStep,
   } = useMultiStepFormContext();
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onNextStep();
+    goToNextStep();
   };
 
   return (
@@ -32,7 +32,7 @@ export default function AddonsForm() {
             addonName="Online service"
             billingTime={billingTime}
             description="Access to multiplayer games"
-            onChangeAddon={onChangeAddon}
+            onChangeAddon={toggleAddon}
           />
 
           <AddonCheckboxInput
@@ -42,7 +42,7 @@ export default function AddonsForm() {
             addonName="Larger Storage"
             billingTime={billingTime}
             description="Extra 1TB of cloud save"
-            onChangeAddon={onChangeAddon}
+            onChangeAddon={toggleAddon}
           />
 
           <AddonCheckboxInput
@@ -52,7 +52,7 @@ export default function AddonsForm() {
             addonName="Customizable profile"
             billingTime={billingTime}
             description="Custom theme on your profile"
-            onChangeAddon={onChangeAddon}
+            onChangeAddon={toggleAddon}
           />
         </fieldset>
       </form>

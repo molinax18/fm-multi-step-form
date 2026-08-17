@@ -11,15 +11,15 @@ import proImg from "../../assets/images/icon-pro.svg";
 export default function PlanForm() {
   const {
     state: { billingTime, plan },
-    onBillingTime,
-    onChangePlan,
-    onNextStep,
+    toggleBillingTime,
+    setPlan,
+    goToNextStep,
   } = useMultiStepFormContext();
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onNextStep();
+    goToNextStep();
   };
 
   return (
@@ -39,7 +39,7 @@ export default function PlanForm() {
             billingTime={billingTime}
             image={arcadeImg}
             checked={plan === "arcade"}
-            onChangePlan={onChangePlan}
+            onChangePlan={setPlan}
           />
 
           <PlanRadioInput
@@ -49,7 +49,7 @@ export default function PlanForm() {
             billingTime={billingTime}
             image={advancedImg}
             checked={plan === "advanced"}
-            onChangePlan={onChangePlan}
+            onChangePlan={setPlan}
           />
 
           <PlanRadioInput
@@ -59,13 +59,13 @@ export default function PlanForm() {
             billingTime={billingTime}
             image={proImg}
             checked={plan === "pro"}
-            onChangePlan={onChangePlan}
+            onChangePlan={setPlan}
           />
         </fieldset>
 
         <PlanBillingSwitch
           billingTime={billingTime}
-          onBillingTime={onBillingTime}
+          onBillingTime={toggleBillingTime}
         />
       </form>
     </article>

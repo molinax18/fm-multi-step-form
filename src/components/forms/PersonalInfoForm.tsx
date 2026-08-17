@@ -18,7 +18,7 @@ interface FormErrors {
 export default function PersonalInfoForm({
   ...props
 }: ComponentPropsWithoutRef<"article">) {
-  const { onNextStep, addPersonalInfo } = useMultiStepFormContext();
+  const { goToNextStep, setPersonalInfo } = useMultiStepFormContext();
   const [error, setError] = useState<FormErrors | null>(null);
 
   const onSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -55,8 +55,8 @@ export default function PersonalInfoForm({
     }
 
     setError(null);
-    addPersonalInfo({ name, email, phone });
-    onNextStep();
+    setPersonalInfo({ name, email, phone });
+    goToNextStep();
   };
 
   return (

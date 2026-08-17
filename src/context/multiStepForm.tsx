@@ -1,13 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useReducer, type ReactNode } from "react";
 import type {
   AddonType,
   MultiStepFormContextProps,
-  MultiStepFormValues,
   PersonalInfoType,
   PlanType,
 } from "../types/multiStepForm";
 import { initialContextValue } from "../constants/multiStepForm";
+import { formReducer } from "../reducers/formReducer";
 
 export const MultiStepFormContext =
   createContext<MultiStepFormContextProps | null>(null);
@@ -17,57 +17,42 @@ export function MultiStepFormContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [state, setState] = useState<MultiStepFormValues>(initialContextValue);
+  const [state, dispatch] = useReducer(formReducer, initialContextValue);
 
-  function onBillingTime() {
-    setState((prev) => ({
-      ...prev,
-      billingTime: prev.billingTime === "monthly" ? "yearly" : "monthly",
-    }));
-  }
+  const toggleBillingTime = () => {
+    dispatch({ type: "TOGGLE_BILLING_TIME" });
+  };
 
-  function onChangePlan(newPlan: PlanType) {
-    setState((prev) => ({
-      ...prev,
-      plan: newPlan,
-    }));
-  }
+  const setPlan = (newPlan: PlanType) => {
+    dispatch({ type: "SET_PLAN", payload: newPlan });
+  };
 
-  function onNextStep() {
-    setState((prev) => ({ ...prev, currentStep: prev.currentStep + 1 }));
-  }
+  const goToNextStep = () => {
+    dispatch({ type: "GO_TO_NEXT_STEP" });
+  };
 
-  function addPersonalInfo(data: PersonalInfoType) {
-    setState((prev) => ({ ...prev, personalInfo: data }));
-  }
+  const setPersonalInfo = (data: PersonalInfoType) => {
+    dispatch({ type: "SET_PERSONAL_INFO", payload: data });
+  };
 
-  function onChangeAddon(addon: AddonType) {
-    const hasAddon = state.addons.some((a) => a === addon);
+  const toggleAddon = (addon: AddonType) => {
+    dispatch({ type: "TOGGLE_ADDON", payload: addon });
+  };
 
-    if (hasAddon) {
-      const newAddons = state.addons.filter((a) => a !== addon);
-      setState((prev) => ({ ...prev, addons: newAddons }));
-      return;
-    }
-
-    setState((prev) => ({ ...prev, addons: [...state.addons, addon] }));
-  }
-
-  function onPrevStep() {
-    setState((prev) => ({ ...prev, currentStep: prev.currentStep - 1 }));
-  }
+  const goToPrevStep = () => {
+    dispatch({ type: "GO_TO_PREV_STEP" });
+  };
 
   return (
     <MultiStepFormContext.Provider
       value={{
         state,
-        setState,
-        onBillingTime,
-        onChangePlan,
-        onNextStep,
-        addPersonalInfo,
-        onChangeAddon,
-        onPrevStep,
+        toggleBillingTime,
+        setPlan,
+        goToNextStep,
+        setPersonalInfo,
+        toggleAddon,
+        goToPrevStep,
       }}
     >
       {children}

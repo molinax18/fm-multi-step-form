@@ -8,13 +8,13 @@ export default function MultiStepFooter({
   className = "",
   ...props
 }: ComponentPropsWithoutRef<"footer">) {
-  const { state, onPrevStep } = useMultiStepFormContext();
+  const { state, goToPrevStep } = useMultiStepFormContext();
 
   return (
     <footer className={`${style.footer} ${className}`} {...props}>
       <nav>
         {state.currentStep > 1 && (
-          <Button btnTheme="semi" onClick={onPrevStep}>
+          <Button btnTheme="semi" onClick={goToPrevStep}>
             Go Back
           </Button>
         )}
